@@ -1,0 +1,14 @@
+1 2 likes
+1 4 follows
+1 6 follows
+1 6 likes
+2 1 follows
+2 5 likes
+2 6 likes
+3 1 follows
+3 4 likes
+4 2 likes
+4 3 follows
+5 3 likes
+6 1 follows
+6 4 likes

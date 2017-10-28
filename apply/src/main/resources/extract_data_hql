@@ -1,0 +1,8 @@
+use lkl_card_score;
+ set mapreduce.job.queuename=szoffline;
+-- 抽取出每个人的逾期数据
+ create table fraud_mobile_performance AS SELECT if(a.label=0,1,0) AS good,if(a.label=1,1,0) AS bad,if(a.label=2,1,0) AS unknown,a.apply_time,b.history_due_day,b.current_due_day,b.mobile from fqz_order_performance_data_new a inner join creditloan.s_c_apply_user b ON a.cert_no= b.cert_no AND a.year='2017' AND a.month ='09' AND a.day='19' AND b.year='2017' AND b.month='09' AND b.day='19';
+-- 社区 黑名单
+ create table fraud_community_mobile_black as select a.community_mobile,a.mobile,if(b.mobile is not null,0,1) as lable from louvain_result2 a left outer join creditloan.s_c_loan_blacklist b on a.community_mobile = b.mobile and b.year='2017' and b.month='09' and b.day='19';
+-- 社区id每个人的逾期情况按社区id,是否黑名单分组
+ create table fraud_community_mobile_black_performance as SELECT a.community_mobile,a.lable,sum(if(b.good>=0,b.good,0)) goods,sum(if(b.bad>=0,b.bad,0)) bads,sum(if(b.unknown>=0,b.unknown,0)) unknowns,sum(if(b.history_due_day>=0,b.history_due_day,0)) history_due_days,sum(if(b.current_due_day>=0,b.current_due_day,0)) current_due_days from fraud_community_mobile_black AS a LEFT JOIN fraud_mobile_performance AS b on a.community_mobile=b.mobile GROUP BY a.community_mobile,a.lable;

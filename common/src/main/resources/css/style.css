@@ -1,0 +1,21 @@
+graph {
+    fill-color: white;
+}
+node {
+    size: 65;
+    fill-color: #CCCCCC, #AAAAAA;
+    fill-mode: gradient-radial;
+    text-offset: 0, 0;
+    stroke-mode: plain;
+    stroke-color: #333333;
+}
+node:clicked {
+    fill-color: #2277FF, #88AAFF;
+    fill-mode: gradient-radial;
+    size: 100;
+    text-size:18;
+    text-offset: 0, 0;
+}
+edge {
+    text-alignment: along;
+}

@@ -1,0 +1,10 @@
+#ID NAME AGE
+1 tom 34
+2 chiara 51
+3  22
+4 marco 28
+5 lucia 40
+6 meria 32
+7 tommy 30
+8 giulio 45
+9 ada 33
