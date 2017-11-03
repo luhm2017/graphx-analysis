@@ -20,7 +20,8 @@ object GraphxBSP {
     val gbsp = new GraphxBSP(args)
     gbsp.runNHopResult()
     //    gbsp.runNHopPregelResult()
-    //    F:\\graphx-analysis\\apply\\bin\\test.csv 3 F:\\out\\output 7,13,15,16,17,19,20
+    ///user/szdsjkf/exportGraphVertexEdge/dt=2017-11-01
+    //    F:\\graphx-analysis\\apply\\bin\\test.csv 4 F:\\out\\output 7,13,15,16,17,19,20
   }
 }
 
@@ -167,6 +168,7 @@ class GraphxBSP(args: Array[String]) extends Serializable {
     * @param path
     * @return
     */
+  //kafka
   def genEdgeRdd(path: String): RDD[Edge[EdgeArr]] = {
     //    val edgeRDD = sc.textFile(args(0), 35).mapPartitions(lines => lines.map { line =>
     val edgeRDD = sc.textFile(args(0)).mapPartitions(lines => lines.map { line =>
